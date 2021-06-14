@@ -1,0 +1,9 @@
+{
+  "project_name": "UfoTest Plugin",
+  "project_slug": "ufotest_plugin",
+  "short_description": "A mock ufotest plugin template",
+  "full_name": "Jonas Teufel",
+  "email": "your.github@mailaddress.com",
+  "version": "0.0.0",
+  "repo_url": "https://github.com/the16thpythonist/cookiecutter-ufotest-plugin.git"
+}

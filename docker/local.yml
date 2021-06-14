@@ -1,0 +1,21 @@
+version: '3.2'
+
+services:
+
+  ufotest_{{ cookecutter.project_slug }}:
+    image: ufotest_plugin
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    ports:
+      - "8030:8030"
+    restart: on-failure
+    environment:
+      UFOTEST_REPOSITORY: "https://github.com/the16thpythonist/ufotest.git"
+      TEST: 1
+    volumes:
+      - ..:/home/ufotest/.ufotest/plugins/{{ cookiecutter.project_slug }}
+      - /tmp:/tmp
+
+volumes:
+  {{ cookiecutter.project_slug }}: {}
