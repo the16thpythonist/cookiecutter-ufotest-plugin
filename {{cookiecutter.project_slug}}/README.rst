@@ -1,0 +1,90 @@
+===============================
+{{ cookiecutter.project_name }}
+===============================
+
+This repository defines a *UfoTest Plugin*. UfoTest is an application which was developed for the continuous testing
+of various scientific camera systems at the `Institute of Data Processing (IPE) <https://www.ipe.kit.edu/>`_ of the
+`Karlsruhe Institute of Technology (KIT) <https://www.kit.edu/>`_. By implementing a plugin management system and
+exposing various action and filter hooks within it's core routines, UfoTest allows functionality to be added or
+modified by third party code such as this plugin.
+
+{{ cookiecutter.short_description }}
+
+Installation
+============
+
+UfoTest plugins are installed by placing their source code folder into the special ``plugins`` folder of a local
+UfoTest installation. This is best done by cloning the repository using git:
+
+.. code-block:: console
+
+    cd ~/.ufotest/plugins
+    git clone {{ cookiecutter.repo_url }}
+
+With each start of an UfoTest runtime all plugins within this folder are automatically discovered and the ``main.py``
+files contained within each plugin folder is imported. Within these main files, it is important to register all the
+necessary callbacks to the corresponding hooks.
+
+If the plugin requires additional dependencies for its operation, these can be installed from the ``requirements.txt``
+file:
+
+.. code-block:: console
+
+    pip3 install -r {{ cookiecutter.project_slug }}/requirements.txt
+
+Usage
+=====
+
+! Insert your own usage description for the usage of the plugin !
+
+Development
+===========
+
+For the development of this plugin an UfoTest installation is required. The plugin will have to be installed into the
+plugin folder of the UfoTest installation folder ``.ufotest``. This UfoTest installation can be created manually on
+the local system, but a docker container can also be used. Using a docker container to provide the UfoTest installation
+has several advantages: Testing and development are less heavily by side effects of any one specific local development
+environment. It is possible to manage multiple concurrent installations for different purposes and different
+configurations. The necessary configuration is provided "out of the box".
+
+Using the docker container
+--------------------------
+
+As a prerequisite of using the docker UfoTest environment, both ``docker`` and ``docker-compose`` have to be installed:
+
+.. code-block:: console
+
+    sudo apt-get install docker docker-compose
+
+Initially building the container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The container can then be build using the composer YML file which defines the necessary environment. For this step
+navigate to the root folder of the local clone of this repository.
+
+.. code-block:: console
+
+    sudo docker-compose -f docker/local.yml
+
+If at one point in the future the development environment is irreparably damaged, the whole container can be wiped and
+rebuild by using the ``rebuild.sh`` script:
+
+.. code-block:: console
+
+    ./docker/rebuild.sh
+
+Running UfoTest commands in the container
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can use docker compose to execute UfoTest commands using the UfoTest installation from within the container:
+
+.. code-block:: console
+
+    sudo docker-compose -f docker/local.yml run ufotest_{{ cookiecutter.project_slug }} ufotest --help
+
+Since writing out this command is a bit tedious, the same can be achieved by invoking the ``run.sh`` script, which can
+be found at the top level of this repository with the command string to be executed within the container.
+
+.. code-block:: console
+
+    ./run.sh "ufotest --help"

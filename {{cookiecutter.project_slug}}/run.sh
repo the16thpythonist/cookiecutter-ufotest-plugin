@@ -1,0 +1,1 @@
+sudo docker-compose run ufotest_{{ cookiecutter.project_slug }} "$1"
