@@ -1,1 +1,1 @@
-sudo docker-compose run ufotest_{{ cookiecutter.project_slug }} "$1"
+sudo docker-compose -f docker/local.yml run --rm -p 8030:8030 ufotest_{{ cookiecutter.project_slug }} bash -c "$1"

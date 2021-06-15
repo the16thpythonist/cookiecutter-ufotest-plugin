@@ -88,3 +88,15 @@ be found at the top level of this repository with the command string to be execu
 .. code-block:: console
 
     ./run.sh "ufotest --help"
+
+Using the web interface
+~~~~~~~~~~~~~~~~~~~~~~~
+
+It is also possible to start the UfoTest web interface within the container and then view it as if it were running on
+the local machine. This is achieved by mapping the port from the container to the same port of the local machine.
+UfoTest web interface runs on the port 8030, so make sure that no other service is bound to this port and then run
+the following command to start the server:
+
+.. code-block:: console
+
+    ./run.sh "ufotest ci serve"
