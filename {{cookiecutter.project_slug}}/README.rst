@@ -100,3 +100,22 @@ the following command to start the server:
 .. code-block:: console
 
     ./run.sh "ufotest ci serve"
+
+Compiling this README
+---------------------
+
+The ufotest web interfaces is able to display the :code:`README.html` file for every ufotest plugin. Writing a
+separate HTML readme would be tedious though. Luckily this very RST file can be converted easily into HTML format.
+
+For this make sure that :code:`docutils` is installed:
+
+.. code-block:: console
+
+    python3 -m pip install docutils
+
+Then you can simply run the :code:`doc.sh` bash script and it will create the HTML file:
+
+.. code-block:: console
+    :caption: in the plugin folder
+
+    bash doc.sh
