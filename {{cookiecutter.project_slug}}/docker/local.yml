@@ -14,7 +14,7 @@ services:
       UFOTEST_REPOSITORY: "https://github.com/the16thpythonist/ufotest.git"
       TEST: 1
     volumes:
-      - ..:/home/ufotest/.ufotest/plugins/{{ cookiecutter.project_slug }}
+      - ..:/root/.ufotest/plugins/{{ cookiecutter.project_slug }}
       - /tmp:/tmp
 
 volumes:
